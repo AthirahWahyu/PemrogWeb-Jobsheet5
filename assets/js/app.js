@@ -33,8 +33,13 @@ function initTableFilter() {
         const keyword = input.value.toLowerCase();
         const rows = table.querySelectorAll("tbody tr");
         rows.forEach(function (row) {
-            const teks = row.textContent.toLowerCase();
-            row.style.display = teks.includes(keyword) ? "" : "none";
+            const firstTd = row.querySelector("td");
+            if (firstTd) {
+                const teksKolomUtama = firstTd.textContent.toLowerCase();
+                row.style.display = teksKolomUtama.includes(keyword) ? "" : "none";
+                
+            }
+            
         });
     });
 }
